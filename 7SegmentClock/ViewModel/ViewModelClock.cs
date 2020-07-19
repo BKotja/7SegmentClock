@@ -1,7 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Windows;
-using System.Windows.Input;
 using System.Windows.Threading;
 
 namespace _7SegmentClock.ViewModel
@@ -20,13 +19,7 @@ namespace _7SegmentClock.ViewModel
             dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, 100);
             dispatcherTimer.Tick += dispatcherTimer_Tick;
 
-            if (!DesignerProperties.GetIsInDesignMode(new System.Windows.DependencyObject())) dispatcherTimer.Start();          
-        }
-
-        public void OnTop(object sender, KeyboardFocusChangedEventArgs e)
-        {
-            Window window = (Window)sender;
-            window.Topmost = true;
+            if (!DesignerProperties.GetIsInDesignMode(new DependencyObject())) dispatcherTimer.Start();          
         }
 
         private void dispatcherTimer_Tick(object sender, EventArgs e)
