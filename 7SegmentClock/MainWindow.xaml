@@ -1,0 +1,66 @@
+﻿<Window x:Class="_7SegmentClock.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:_7SegmentClock"
+        xmlns:vm="clr-namespace:_7SegmentClock.ViewModel"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+        xmlns:b="clr-namespace:_7SegmentClock.Behaviors"
+        xmlns:tb="http://www.hardcodet.net/taskbar"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="100" Width="475" ResizeMode="NoResize"
+        Background="Transparent" AllowsTransparency="True" WindowStyle="None"
+        ShowInTaskbar="False" Topmost="True">
+
+    <Window.DataContext>
+        <vm:ViewModelClock/>
+    </Window.DataContext>
+
+    <Window.Resources>
+        <Style x:Key="SevenSegDesign" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="72"/>
+            <Setter Property="Foreground" Value="Red"/>
+            <Setter Property="FontFamily" Value="{StaticResource GSEG7}"/>
+        </Style>
+    </Window.Resources>
+
+    <i:Interaction.Behaviors>
+        <b:DraggingWindowBehavior />
+        <b:CloseWindowByMenuItemClick menuItem="{Binding ElementName=mClose}"/>
+        <b:CloseWindowByMenuItemClick menuItem="{Binding ElementName=tClose}"/>
+    </i:Interaction.Behaviors>
+
+    <Canvas>
+        <Canvas.ContextMenu>
+            <ContextMenu>
+                <MenuItem Name="mClose" Header="Close"/>
+            </ContextMenu>
+        </Canvas.ContextMenu>
+        
+        <Rectangle
+            Opacity="0.5"
+            Height="100"
+            Width="475"
+            Fill="Black"
+            Stroke="DarkGray" StrokeThickness="4"
+            RadiusX="20" RadiusY="20"/>
+
+        <TextBlock  Width="475" TextAlignment="Center"
+                    Canvas.Top="10" Canvas.Bottom="10" 
+                    Style="{StaticResource SevenSegDesign}"
+                    Text="{Binding Path=ActualTime, Mode=OneWay, StringFormat={}{0:HH:mm:ss}}" />
+
+        <tb:TaskbarIcon
+                IconSource="/Icons/TrayIco.ico"
+                ToolTipText="7SClock">
+            <tb:TaskbarIcon.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Name="tClose" Header="Close"/>
+                </ContextMenu>
+            </tb:TaskbarIcon.ContextMenu>
+        </tb:TaskbarIcon>
+
+    </Canvas>
+    
+</Window>

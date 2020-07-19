@@ -1,0 +1,9 @@
+﻿<Application x:Class="_7SegmentClock.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:_7SegmentClock"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <FontFamily x:Key="GSEG7">pack://application:,,,/Fonts/#DSEG7 Classic Bold</FontFamily>
+    </Application.Resources>
+</Application>
