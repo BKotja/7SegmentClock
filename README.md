@@ -1,5 +1,5 @@
 #7SegmentClock
-Simple seven segment clock
+Simple seven segment clock  
 Example of WPF + MVVM pattern
 
 ![Screenshot1](ReadMe/1.PNG)
